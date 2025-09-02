@@ -19,11 +19,13 @@
 
     <% categorias.forEach(categoria => { %>
       <div class="categoria">
+        
         <h2><%= categoria.nombre %></h2>
         <div class="grid">
           <% categoria.cursos.forEach(curso => { %>
             <div class="card">
               <img src="<%= curso.imagen %>" alt="<%= curso.titulo %>">
+              <h3><%= curso.precio %></h3>
               <h3><%= curso.titulo %></h3>
               <p><%= curso.descripcion %></p>
               <a href="/curso/<%= curso.id %>" class="btn">Comprar</a>
