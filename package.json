@@ -2,19 +2,19 @@
   "name": "curso-express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ejs",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js "
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10",
-    "package-lock.json": "^1.0.0",
-    "package.json": "^2.0.1"
+    "express": "^5.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
