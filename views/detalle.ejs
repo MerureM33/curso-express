@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= curso.titulo %> - Compra</title>
+  <link rel="stylesheet" href="/main.css">
+  <style>
+    .detalle-container {
+      display: flex;
+      gap: 40px;
+      padding: 40px;
+    }
+    .detalle-curso {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .detalle-curso img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .detalle-pago {
+      flex: 1;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .opcion {
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .opcion:hover {
+      background: #f0f0f0;
+    }
+    .contenido-pago {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .contenido-pago img {
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">🎓 CursosOnline</div>
+    <nav class="menu">
+      <a href="/pereza">Inicio</a>
+      <a href="/cursos">Cursos</a>
+    </nav>
+  </header>
+
+  <section class="detalle-container">
+    
+    <div class="detalle-curso">
+      <img src="<%= curso.imagen %>" alt="<%= curso.titulo %>">
+      <h2><%= curso.titulo %></h2>
+      <p><%= curso.descripcion %></p>
+    </div>
+
+     
+    <div class="detalle-pago">
+      <h3>Opciones de pago</h3>
+
+      
+
+     
+      <div class="opcion" onclick="togglePago('yape')">
+        📱 Yape / Plin
+      </div>
+      <div id="yape" class="contenido-pago">
+        <p>Escanea este QR para pagar S/ <%= curso.precio %></p>
+        <img src="/images/yape-qr.jpeg" alt="QR Yape">
+      </div>
+
+ 
+      <div class="opcion">
+        💲 PayPal
+        <div id="paypal-button-container" style="margin-top:10px;"></div>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 CursosOnline - Diego Perez</p>
+  </footer>
+
+ 
+  <script src="https://www.paypal.com/sdk/js?client-id=AeeqRQ0BujfG9pNRWRxzRG-Lk00k9C4rZc2m6BRb9WtbBUGOsWV03BmzEvUt-bspWQAP6lExuA__H8AV&currency=USD"></script>
+
+  <script>
+    // PayPal
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '15.00'  
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('✅ Pago realizado por ' + details.payer.name.given_name);
+        });
+      }
+    }).render('#paypal-button-container');
+
+    
+    function togglePago(id) {
+      const seccion = document.getElementById(id);
+      seccion.style.display = (seccion.style.display === "block") ? "none" : "block";
+    }
+  </script>
+</body>
+</html>

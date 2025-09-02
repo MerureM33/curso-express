@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Categorías de Cursos</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">🎓 CursosOnline</div>
+    <nav class="menu">
+      <a href="/pereza">Inicio</a>
+      <a href="/cursos">Cursos</a>
+    </nav>
+  </header>
+
+  <section class="cursos">
+    <h1>Explora nuestras categorías</h1>
+
+    <% categorias.forEach(categoria => { %>
+      <div class="categoria">
+        <h2><%= categoria.nombre %></h2>
+        <div class="grid">
+          <% categoria.cursos.forEach(curso => { %>
+            <div class="card">
+              <img src="<%= curso.imagen %>" alt="<%= curso.titulo %>">
+              <h3><%= curso.titulo %></h3>
+              <p><%= curso.descripcion %></p>
+              <a href="/curso/<%= curso.id %>" class="btn">Comprar</a>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    <% }) %>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 CursosOnline - Diego Perez</p>
+  </footer>
+</body>
+</html>
