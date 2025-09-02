@@ -50,6 +50,19 @@
     .contenido-pago img {
       max-width: 200px;
     }
+    .monto {
+      display: flex;
+      justify-content: space-between; /* separa el texto y el precio */
+      align-items: center;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .monto .precio {
+      color: #1eaa59;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -65,17 +78,19 @@
     
     <div class="detalle-curso">
       <img src="<%= curso.imagen %>" alt="<%= curso.titulo %>">
+      
       <h2><%= curso.titulo %></h2>
       <p><%= curso.descripcion %></p>
     </div>
 
      
     <div class="detalle-pago">
+
+      <h1 class="monto">💰 Total a pagar: <span class="precio"><%= curso.precio %></span></h1>
+      
       <h3>Opciones de pago</h3>
 
-      
 
-     
       <div class="opcion" onclick="togglePago('yape')">
         📱 Yape / Plin
       </div>
