@@ -2,9 +2,9 @@
   "name": "curso-express",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.ejs",
   "scripts": {
-    "dev": "nodemon app.js "
+    "dev": "node app.js "
   },
   "keywords": [],
   "author": "",
